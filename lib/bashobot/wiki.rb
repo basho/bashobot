@@ -28,6 +28,8 @@ class Wiki
   end
 
   def refresh_wiki
-    @wiki = Mechanize.new.get("http://wiki.basho.com/")
+    synchronize(:wiki) do
+      @wiki = Mechanize.new.get("http://wiki.basho.com/")
+    end
   end
 end
