@@ -1,0 +1,10 @@
+* BashoBot: An IRC bot for the #riak IRC Channel
+
+  Requires Ruby 1.9.2 and Bundler.
+
+#+BEGIN_SRC bash
+git clone git://github.com/basho/bashobot.git
+cd bashobot
+bundle install
+./bashobot
+#+END_SRC
