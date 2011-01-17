@@ -8,7 +8,7 @@ class Wiki
   suffix ''
   react_on :message
 
-  match /!help/i, method: :help, use_prefix: false
+  match /\!help/i, method: :help, use_prefix: false
   match /\s*(.*)/i, method: :find_wiki_page
 
   timer 86400, method: :refresh_wiki

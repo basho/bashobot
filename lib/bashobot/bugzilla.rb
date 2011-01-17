@@ -11,7 +11,7 @@ class Bugzilla
   prefix ''
   suffix ''
 
-  match /!help/, method: :help, use_prefix: false
+  match /\!help/i, method: :help, use_prefix: false
   
   match /\!bug\s+(\d+)/i, :method => :lookup_bug
   match /bz:(?:\/\/)?(\d+)/i, :method => :lookup_bug
