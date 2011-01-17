@@ -11,10 +11,18 @@ class Bugzilla
   prefix ''
   suffix ''
 
+  match /!help/, method: :help, use_prefix: false
+  
   match /\!bug\s+(\d+)/i, :method => :lookup_bug
   match /bz:(?:\/\/)?(\d+)/i, :method => :lookup_bug
   match /\!bugsearch\s+(.*)/i, :method => :search_bugs
 
+  def help(message)
+    message.reply "[HELP] !bug <bug id> : Look up a bug on issues.basho.com"
+    message.reply "[HELP] bz://<bug id> : Look up a bug on issues.basho.com"
+    message.reply "[HELP] !bugsearch <terms> : Do a search for bugs on issues.basho.com"
+  end
+  
   def bugzilla
     @bugzilla ||= Mechanize.new
   end
