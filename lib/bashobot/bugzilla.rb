@@ -32,8 +32,12 @@ class Bugzilla
     page = synchronize(:bz) do
       bugzilla.get url
     end
-    title = page.title.encode('ASCII', replace:' ').sub(/Bug (\d+)\s+/, '[\1] ')
-    message.reply "#{title} - #{url}"
+    if page.title.encode('ASCII', replace: ' ') =~ /invalid/i
+      message.reply "No such bug ##{issue}."
+    else      
+      title = page.title.encode('ASCII', replace:' ').sub(/Bug (\d+)\s+/, '[\1] ')
+      message.reply "#{title} - #{url}"
+    end
   end
 
   def search_bugs(message, query)
