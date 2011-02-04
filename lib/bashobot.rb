@@ -2,6 +2,7 @@ require 'cinch'
 require 'bashobot/nickserv'
 require 'bashobot/bugzilla'
 require 'bashobot/wiki'
+require 'bashobot/pulls'
 require 'yaml'
 
 BashoBot = Cinch::Bot.new do

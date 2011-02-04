@@ -19,10 +19,11 @@ class Pulls
   end
 
   def find_pull(message, repository, terms)
-    terms = terms.split(/\s*/)
+    terms = terms.strip.scan(/\S+/)
     pulls = Github.pulls(repository)['pulls'] rescue []
     unless terms.empty?
-      pulls.select! {|p| terms.any? {|t| p['title'] =~ Regexp.new(Regexp.quote(t)) } }
+      terms = terms.map {|t| Regexp.new(Regexp.quote(t)) }
+      pulls.select! {|p| terms.all? {|t| p['title'] =~ t } }
     end
     pulls.each do |p|
       message.reply "[PR] #{p['title']} #{p['html_url']}"
