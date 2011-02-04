@@ -42,6 +42,10 @@ class Bugzilla
     page = synchronize(:bz) do
       bugzilla.get url
     end
+    unless (page.root / "span.zero_results").empty?
+      message.reply "No bugs found for '#{query}'."
+      return
+    end
     table = page.root / "table.bz_buglist"
     table.children.each do |row|
       if row['class'] =~ /bz_bugitem/

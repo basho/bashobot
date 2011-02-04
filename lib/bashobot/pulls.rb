@@ -19,12 +19,13 @@ class Pulls
   end
 
   def find_pull(message, repository, terms)
-    terms = terms.strip.scan(/\S+/)
+    sterms = terms.strip.scan(/\S+/)
     pulls = Github.pulls(repository)['pulls'] rescue []
-    unless terms.empty?
-      terms = terms.map {|t| Regexp.new(Regexp.quote(t)) }
-      pulls.select! {|p| terms.all? {|t| p['title'] =~ t } }
+    unless sterms.empty?
+      sterms = sterms.map {|t| Regexp.new(Regexp.quote(t)) }
+      pulls.select! {|p| sterms.all? {|t| p['title'] =~ t } }
     end
+    message.reply "No pull-requests found in #{repository} with terms '#{terms}'." if pulls.empty?
     pulls.each do |p|
       message.reply "[PR] #{p['title']} #{p['html_url']}"
     end
