@@ -10,6 +10,6 @@ BashoBot = Cinch::Bot.new do
     c.channels = %w{#riak}
     c.nick = "bashobot"
     c.realname = "BashoBot :: https://github.com/basho/bashobot"
-    c.plugins.plugins = [Nickserv, Bugzilla, Wiki]
+    c.plugins.plugins = [Nickserv, Bugzilla, Wiki, Pulls]
   end
 end
