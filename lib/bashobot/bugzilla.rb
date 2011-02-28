@@ -12,7 +12,7 @@ class Bugzilla
   suffix ''
 
   match /\!help/i, method: :help, use_prefix: false
-  
+
   match /\!bug\s+(\d+)/i, :method => :lookup_bug
   match /bz:(?:\/\/)?(\d+)/i, :method => :lookup_bug
   match /\!bugsearch\s+(.*)/i, :method => :search_bugs
@@ -22,7 +22,7 @@ class Bugzilla
     message.reply "[HELP] bz://<bug id> : Look up a bug on issues.basho.com"
     message.reply "[HELP] !bugsearch <terms> : Do a search for bugs on issues.basho.com"
   end
-  
+
   def bugzilla
     @bugzilla ||= Mechanize.new
   end
@@ -34,15 +34,14 @@ class Bugzilla
     end
     if page.title.encode('ASCII', replace: ' ') =~ /invalid/i
       message.reply "No such bug ##{issue}."
-    else      
+    else
       title = page.title.encode('ASCII', replace:' ').sub(/Bug (\d+)\s+/, '[\1] ')
       message.reply "#{title} - #{url}"
     end
   end
 
   def search_bugs(message, query)
-    query = URI.escape(query)
-    url = "https://issues.basho.com/buglist.cgi?quicksearch=#{query}"
+    url = "https://issues.basho.com/buglist.cgi?quicksearch=#{URI.escape(query)}"
     page = synchronize(:bz) do
       bugzilla.get url
     end

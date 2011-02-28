@@ -3,6 +3,7 @@ require 'bashobot/nickserv'
 require 'bashobot/bugzilla'
 require 'bashobot/wiki'
 require 'bashobot/pulls'
+require 'bashobot/knowledgebase'
 require 'yaml'
 
 BashoBot = Cinch::Bot.new do
@@ -11,6 +12,6 @@ BashoBot = Cinch::Bot.new do
     c.channels = %w{#riak}
     c.nick = "bashobot"
     c.realname = "BashoBot :: https://github.com/basho/bashobot"
-    c.plugins.plugins = [Nickserv, Bugzilla, Wiki, Pulls]
+    c.plugins.plugins = [Nickserv, Bugzilla, Wiki, Pulls, KnowledgeBase]
   end
 end
