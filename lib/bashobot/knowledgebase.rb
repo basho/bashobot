@@ -32,7 +32,7 @@ class KnowledgeBase
     else
       page.root.css(".item-info h1 a").each do |link|
         linkuri = URI.join(KB_URL, link.attribute('href').content)
-        message.reply "[KB] #{encode(link.text)} #{encode(linkuri)}"
+        message.reply "[KB] #{encode(link.text)} #{encode(linkuri.to_s)}"
       end
     end
   end
