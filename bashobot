@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 child = fork do
   $0 = 'bashobot'
-  $: << File.expand_path("../lib", __FILE_)_
+  $: << File.expand_path("../lib", __FILE__)
   require 'rubygems'
   require 'bundler/setup'
   require 'bashobot'
