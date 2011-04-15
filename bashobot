@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
-$: << File.expand_path("../lib", __FILE__)
-require 'rubygems'
-require 'bundler/setup'
-require 'bashobot'
+child = fork do
+  $0 = 'bashobot'
+  $: << File.expand_path("../lib", __FILE_)_
+  require 'rubygems'
+  require 'bundler/setup'
+  require 'bashobot'
 
-BashoBot.start
+  BashoBot.start
+end
+Process.detach(child)
