@@ -19,3 +19,5 @@ bundle install
     Do a quick-search on the Basho bugzilla.
 *** !wiki <terms>
     Finds wiki pages with <terms> in the title on wiki.basho.com.
+*** !kb <terms>
+    Finds knowledge base questions with <terms>.
