@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
-child = fork do
-  $0 = 'bashobot'
-  $: << File.expand_path("../lib", __FILE__)
-  require 'rubygems'
-  require 'bundler/setup'
-  require 'bashobot'
+$0 = 'bashobot'
+$: << File.expand_path("../lib", __FILE__)
+require 'rubygems'
+require 'bundler/setup'
+require 'bashobot'
 
-  BashoBot.start
-end
-Process.detach(child)
+Process.daemon(true)
+
+BashoBot.start

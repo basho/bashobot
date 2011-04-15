@@ -14,4 +14,5 @@ BashoBot = Cinch::Bot.new do
     c.realname = "BashoBot :: https://github.com/basho/bashobot"
     c.plugins.plugins = [Nickserv, Bugzilla, Wiki, Pulls, KnowledgeBase]
   end
+  self.logger = Cinch::Logger::FormattedLogger.new(File.open(File.expand_path("../../log/bashobot.log", __FILE__), "a"))
 end
