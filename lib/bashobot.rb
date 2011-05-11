@@ -19,7 +19,7 @@ BashoBot = Cinch::Bot.new do
     else
       c.channels = %w{#riak}
       c.nick = "bashobot"
-      self.logger = Cinch::Logger::FormattedLogger.new(File.open(File.expand_path("../../log/bashobot.log", __FILE__), "a"))
     end
   end
+  self.logger = Cinch::Logger::FormattedLogger.new(File.open(File.expand_path("../../log/bashobot.log", __FILE__), "a")) unless ENV['BASHOBOT'] == 'test'
 end
