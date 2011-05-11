@@ -3,7 +3,7 @@ GEM
   specs:
     cinch (1.1.2)
     crack (0.1.8)
-    httparty (0.7.4)
+    httparty (0.7.7)
       crack (= 0.1.8)
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)

@@ -5,6 +5,6 @@ require 'rubygems'
 require 'bundler/setup'
 require 'bashobot'
 
-Process.daemon(true)
+Process.daemon(true) unless ENV['BASHOBOT'] == 'test'
 
 BashoBot.start

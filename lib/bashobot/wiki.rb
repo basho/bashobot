@@ -19,7 +19,7 @@ class Wiki
   
   def wiki
     synchronize(:wiki) do
-      @wiki ||= Mechanize.new.get("http://wiki.basho.com/")
+      @wiki ||= fetch_wiki
     end
   end
   
@@ -34,7 +34,11 @@ class Wiki
 
   def refresh_wiki
     synchronize(:wiki) do
-      @wiki = Mechanize.new.get("http://wiki.basho.com/")
+      @wiki = fetch_wiki
     end
+  end
+
+  def fetch_wiki
+    Mechanize.new.get("http://wiki.basho.com/")
   end
 end
