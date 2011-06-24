@@ -21,3 +21,5 @@ bundle install
     Finds wiki pages with <terms> in the title on wiki.basho.com.
 *** !kb <terms>
     Finds knowledge base questions with <terms>.
+*** !vimeo <terms>
+    Finds Basho videos on Vimeo with <terms>. Aliases: !video, !webinar.
